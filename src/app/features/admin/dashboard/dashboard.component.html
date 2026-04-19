@@ -1,0 +1,32 @@
+<div class="section-wrapper">
+  <div class="section-label">Admin Panel</div>
+  <h2 class="section-title">Welcome, {{ auth.currentUser?.username }} 👋</h2>
+  <div class="divider"></div>
+
+  <ng-container *ngIf="stats$ | async as stats">
+    <div class="stats-row">
+      <mat-card class="stat-card">
+        <mat-icon>work</mat-icon>
+        <div class="stat-num">{{ stats.projects }}</div>
+        <div class="stat-label">Projects</div>
+      </mat-card>
+      <mat-card class="stat-card">
+        <mat-icon>psychology</mat-icon>
+        <div class="stat-num">{{ stats.skills }}</div>
+        <div class="stat-label">Skills</div>
+      </mat-card>
+      <mat-card class="stat-card">
+        <mat-icon>business_center</mat-icon>
+        <div class="stat-num">{{ stats.experiences }}</div>
+        <div class="stat-label">Experiences</div>
+      </mat-card>
+    </div>
+  </ng-container>
+
+  <h3 class="quick-title">Quick Actions</h3>
+  <div class="quick-links">
+    <a mat-raised-button *ngFor="let l of quickLinks" [routerLink]="l.route" class="quick-btn">
+      <mat-icon>{{ l.icon }}</mat-icon> {{ l.label }}
+    </a>
+  </div>
+</div>

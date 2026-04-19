@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Edit' : 'Add' }} Project</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="dialog-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title"/>
+      <mat-error *ngIf="form.get('title')?.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+      <mat-error *ngIf="form.get('description')?.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+    <div class="row-two">
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let c of categories" [value]="c">{{ c | titlecase }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Duration</mat-label>
+        <input matInput formControlName="duration" placeholder="e.g. ~956 days"/>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tech Stack (comma-separated)</mat-label>
+      <input matInput formControlName="techStack" placeholder="Angular, TypeScript, RxJS"/>
+      <mat-error *ngIf="form.get('techStack')?.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Highlights (one per line)</mat-label>
+      <textarea matInput formControlName="highlights" rows="4"
+        placeholder="Led frontend for 500+ stakeholders&#10;25% response time improvement"></textarea>
+    </mat-form-field>
+
+    <div class="row-two">
+      <mat-form-field appearance="outline">
+        <mat-label>Live URL (optional)</mat-label>
+        <input matInput formControlName="liveUrl" type="url"/>
+        <mat-icon matSuffix>open_in_new</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>GitHub URL (optional)</mat-label>
+        <input matInput formControlName="githubUrl" type="url"/>
+        <mat-icon matSuffix>code</mat-icon>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()">
+    <mat-icon>save</mat-icon> {{ isEdit ? 'Update' : 'Add' }} Project
+  </button>
+</mat-dialog-actions>

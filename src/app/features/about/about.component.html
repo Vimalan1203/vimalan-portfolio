@@ -1,0 +1,42 @@
+<div class="section-wrapper">
+  <div class="section-label">Background</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="divider"></div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>Frontend Engineer</strong> based in Tiruchirapalli, Tamil Nadu, specializing in Angular ecosystem development. For 3+ years I've built scalable, performant government web platforms that real people depend on every day.</p>
+      <p>My background in Mechanical Engineering gave me a systems-thinking mindset — I approach frontend architecture the same way an engineer approaches design: with precision, iterative refinement, and a focus on reliability.</p>
+      <div class="detail-card">
+        <div class="detail-row"><span class="dl">Location</span><span class="dv">Tiruchirapalli, TN 621001</span></div>
+        <div class="detail-row"><span class="dl">Email</span><span class="dv">vimalansenthilkumar&#64;gmail.com</span></div>
+        <div class="detail-row"><span class="dl">Education</span><span class="dv">B.Tech Mechanical Engg. (GPA 7.8)</span></div>
+        <div class="detail-row"><span class="dl">Languages</span><span class="dv">English (C1), Tamil (C2)</span></div>
+        <div class="detail-row"><span class="dl">Status</span><span class="dv open">Open to Work ✓</span></div>
+      </div>
+      <div class="about-links">
+        <a mat-raised-button color="primary" href="https://github.com/vimalansenthilkumar" target="_blank">
+          <mat-icon>code</mat-icon> GitHub
+        </a>
+        <a mat-stroked-button href="https://www.linkedin.com/in/vimalansenthilkumar-823139275" target="_blank" class="btn-outline-custom">
+          <mat-icon>link</mat-icon> LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <div class="experience-timeline">
+      <h3 class="exp-heading">Work Experience</h3>
+      <ng-container *ngIf="experiences$ | async as exps">
+        <div class="timeline-item" *ngFor="let exp of exps">
+          <div class="tl-dot"></div>
+          <div class="tl-date">{{ exp.startDate }} – {{ exp.current ? 'Present' : exp.endDate }}</div>
+          <div class="tl-role">{{ exp.role }}</div>
+          <div class="tl-company">{{ exp.company }}, {{ exp.location }}</div>
+          <ul class="tl-bullets">
+            <li *ngFor="let b of exp.bullets">{{ b }}</li>
+          </ul>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

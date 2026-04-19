@@ -1,0 +1,36 @@
+.hero {
+  min-height: 100vh; display:flex; align-items:center;
+  padding: 8rem 5% 4rem; position:relative; overflow:hidden;
+}
+.orb {
+  position:absolute; border-radius:50%; filter:blur(100px); pointer-events:none;
+  &.orb1 { width:500px; height:500px; background:#1a56db; top:-100px; right:-100px; opacity:0.25; }
+  &.orb2 { width:400px; height:400px; background:#06b6d4; bottom:0; left:-150px; opacity:0.12; }
+}
+.hero-content { position:relative; max-width:780px; }
+.hero-tag {
+  display:inline-block; font-family:var(--font-mono); font-size:0.8rem;
+  color:var(--cyan); letter-spacing:0.15em; text-transform:uppercase;
+  margin-bottom:1.5rem; padding:0.3rem 0.75rem;
+  border:1px solid rgba(6,182,212,0.3); border-radius:2px;
+}
+.hero-name {
+  font-family:var(--font-display); font-size:clamp(3rem,7vw,5.5rem);
+  line-height:1.05; color:#fff; margin-bottom:0.5rem;
+  span { color:var(--cyan); }
+}
+.hero-role {
+  font-size:1.25rem; color:var(--text-dim); margin-bottom:1.5rem;
+  font-weight:300; min-height:2rem;
+  .role-text { border-right:2px solid var(--cyan); padding-right:4px;
+    animation: blink 1s step-end infinite; }
+}
+@keyframes blink { 50% { border-color:transparent; } }
+.hero-desc { max-width:580px; color:var(--text-dim); font-size:1rem; margin-bottom:2.5rem; }
+.hero-cta { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:3rem; }
+.btn-outline-custom { color:var(--cyan) !important; border-color:rgba(6,182,212,0.4) !important; }
+.hero-stats { display:flex; gap:3rem; flex-wrap:wrap; }
+.stat-num {
+  font-family:var(--font-display); font-size:2.5rem; color:#fff; line-height:1;
+}
+.stat-label { font-size:0.8rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.1em; margin-top:0.25rem; }

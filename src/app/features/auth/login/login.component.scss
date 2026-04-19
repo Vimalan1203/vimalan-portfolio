@@ -1,0 +1,10 @@
+.login-wrapper { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem; }
+.login-card { padding:2.5rem !important; width:100%; max-width:420px; text-align:center; }
+.login-icon { margin-bottom:1rem;
+  mat-icon { font-size:48px; width:48px; height:48px; color:var(--cyan); } }
+h2 { font-family:var(--font-display); font-size:1.75rem; color:#fff; margin-bottom:0.5rem; }
+.hint { color:var(--text-dim); font-size:0.8rem; font-family:var(--font-mono); margin-bottom:1.5rem; }
+.error-msg { margin-bottom:1rem; display:block; }
+.full-width { width:100%; margin-bottom:0.5rem; }
+.login-btn { width:100%; padding:0.75rem !important; font-size:1rem !important; }
+.inline-spinner { display:inline-block; margin-right:8px; }

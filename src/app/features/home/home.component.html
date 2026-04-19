@@ -1,0 +1,25 @@
+<section class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-content fade-up">
+    <div class="hero-tag">Available for opportunities</div>
+    <h1 class="hero-name">Vimalan<br/><span>Senthilkumar</span></h1>
+    <div class="hero-role">
+      <span class="role-text">{{ currentRole$ | async }}</span>
+    </div>
+    <p class="hero-desc">
+      3+ years building high-performance government and enterprise web applications
+      with Angular, TypeScript, and RxJS — serving over a million users across India.
+    </p>
+    <div class="hero-cta">
+      <a mat-raised-button color="primary" routerLink="/projects">View Projects</a>
+      <a mat-stroked-button routerLink="/contact" class="btn-outline-custom">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat" *ngFor="let s of stats">
+        <div class="stat-num">{{ s.num }}</div>
+        <div class="stat-label">{{ s.label }}</div>
+      </div>
+    </div>
+  </div>
+</section>
