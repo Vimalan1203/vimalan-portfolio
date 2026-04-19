@@ -1,0 +1,37 @@
+<div class="section-wrapper">
+  <div class="section-label">What I've built</div>
+  <h2 class="section-title">Key Projects</h2>
+  <div class="divider"></div>
+
+  <ng-container *ngIf="projects$ | async as projects; else loading">
+    <div class="projects-grid">
+      <mat-card class="project-card" *ngFor="let p of projects">
+        <div class="card-accent"></div>
+        <mat-card-header>
+          <mat-card-title class="project-title">{{ p.title }}</mat-card-title>
+          <mat-card-subtitle class="project-meta">{{ p.category | uppercase }} · {{ p.duration }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="project-desc">{{ p.description }}</p>
+          <ul class="highlights">
+            <li *ngFor="let h of p.highlights">{{ h }}</li>
+          </ul>
+          <div class="tech-stack">
+            <span class="tag" *ngFor="let t of p.techStack">{{ t }}</span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions *ngIf="p.liveUrl || p.githubUrl">
+          <a *ngIf="p.liveUrl" mat-button [href]="p.liveUrl" target="_blank" color="primary">
+            <mat-icon>open_in_new</mat-icon> Live
+          </a>
+          <a *ngIf="p.githubUrl" mat-button [href]="p.githubUrl" target="_blank">
+            <mat-icon>code</mat-icon> GitHub
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </ng-container>
+  <ng-template #loading>
+    <div class="loading"><mat-spinner diameter="40"></mat-spinner></div>
+  </ng-template>
+</div>

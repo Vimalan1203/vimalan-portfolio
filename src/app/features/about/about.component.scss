@@ -1,0 +1,35 @@
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+@media(max-width:768px) { .about-grid { grid-template-columns:1fr; gap:2rem; } }
+.about-text p { color:var(--text-dim); margin-bottom:1.25rem; font-size:0.975rem; }
+.about-text strong { color:var(--cyan); }
+.detail-card {
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+  border-radius:8px; padding:1.5rem; margin:1.5rem 0; display:flex; flex-direction:column; gap:0.85rem;
+}
+.detail-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; }
+.dl { font-size:0.8rem; color:var(--text-dim); font-weight:500; }
+.dv { font-size:0.875rem; color:#fff; font-family:var(--font-mono); font-size:0.78rem; }
+.open { color:#34d399 !important; }
+.about-links { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-outline-custom { color:var(--cyan) !important; border-color:rgba(6,182,212,0.4) !important; }
+
+.exp-heading {
+  font-family:var(--font-mono); font-size:0.8rem; color:var(--cyan);
+  letter-spacing:0.1em; text-transform:uppercase; margin-bottom:2rem;
+}
+.experience-timeline { position:relative; padding-left:1.5rem;
+  &::before { content:''; position:absolute; left:0; top:28px; bottom:0;
+    width:2px; background:linear-gradient(180deg,var(--blue),transparent); } }
+.timeline-item { position:relative; margin-bottom:2.5rem; }
+.tl-dot {
+  position:absolute; left:-1.85rem; top:4px; width:20px; height:20px;
+  background:var(--blue); border-radius:50%; border:3px solid var(--navy);
+  &::after { content:''; display:block; width:8px; height:8px;
+    background:var(--cyan); border-radius:50%; margin:3px; }
+}
+.tl-date { font-family:var(--font-mono); font-size:0.72rem; color:var(--cyan); margin-bottom:0.3rem; }
+.tl-role { font-size:1.05rem; font-weight:600; color:#fff; }
+.tl-company { font-size:0.85rem; color:var(--text-dim); margin-bottom:0.75rem; }
+.tl-bullets { list-style:none;
+  li { color:var(--text-dim); font-size:0.85rem; padding-left:1rem; position:relative; margin-bottom:0.35rem;
+    &::before { content:'›'; position:absolute; left:0; color:var(--cyan); } } }

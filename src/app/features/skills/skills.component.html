@@ -1,0 +1,25 @@
+<div class="section-wrapper">
+  <div class="section-label">What I work with</div>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="divider"></div>
+
+  <ng-container *ngIf="groupedSkills$ | async as groups; else loading">
+    <div *ngFor="let cat of objectKeys(groups)" class="skill-category">
+      <h3 class="cat-title">{{ cat }}</h3>
+      <div class="skills-row">
+        <mat-card class="skill-card" *ngFor="let skill of groups[cat]">
+          <div class="skill-icon">{{ skill.icon }}</div>
+          <div class="skill-name">{{ skill.name }}</div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" [style.width.%]="skill.proficiency"></div>
+          </div>
+          <div class="skill-pct">{{ skill.proficiency }}%</div>
+        </mat-card>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="loading"><mat-spinner diameter="40"></mat-spinner></div>
+  </ng-template>
+</div>

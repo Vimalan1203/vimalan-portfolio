@@ -1,0 +1,4 @@
+.dialog-form { display:flex; flex-direction:column; gap:0.25rem; padding-top:0.5rem; min-width:520px; }
+.full-width { width:100%; }
+.row-two { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media(max-width:600px) { .dialog-form { min-width:unset; } .row-two { grid-template-columns:1fr; } }

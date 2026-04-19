@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <a class="nav-logo" routerLink="/">VS // portfolio</a>
+
+  <ul class="nav-links" [class.open]="menuOpen">
+    <li *ngFor="let link of navLinks">
+      <a [routerLink]="link.path" routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact: link.path === '/'}"
+         (click)="menuOpen = false">{{ link.label }}</a>
+    </li>
+    <li *ngIf="auth.isLoggedIn">
+      <a routerLink="/admin" routerLinkActive="active" (click)="menuOpen = false">Admin</a>
+    </li>
+  </ul>
+
+  <div class="nav-actions">
+    <button *ngIf="auth.isLoggedIn" mat-icon-button (click)="logout()" matTooltip="Logout">
+      <mat-icon>logout</mat-icon>
+    </button>
+    <button *ngIf="!auth.isLoggedIn" mat-icon-button routerLink="/auth/login" matTooltip="Admin Login">
+      <mat-icon>lock</mat-icon>
+    </button>
+    <button class="hamburger" mat-icon-button (click)="toggleMenu()">
+      <mat-icon>{{ menuOpen ? 'close' : 'menu' }}</mat-icon>
+    </button>
+  </div>
+</nav>

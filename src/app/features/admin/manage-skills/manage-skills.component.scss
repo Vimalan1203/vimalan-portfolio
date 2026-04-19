@@ -1,0 +1,13 @@
+.page-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:0.5rem; }
+.search-field { width:100%; max-width:400px; margin-bottom:1.5rem; }
+.table-wrapper { overflow-x:auto; border:1px solid var(--card-border); border-radius:8px; }
+.data-table { width:100%; background:transparent !important;
+  th { color:var(--text-dim); font-size:0.78rem; font-family:var(--font-mono); text-transform:uppercase; background:rgba(255,255,255,0.03); }
+  td { color:var(--text); border-bottom-color:var(--card-border) !important; vertical-align:middle; padding:12px 16px; }
+}
+.icon-cell { font-size:1.5rem; width:50px; }
+.bar-row { display:flex; align-items:center; gap:0.75rem; }
+.bar-track { flex:1; height:6px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden; min-width:100px; }
+.bar-fill { height:100%; background:linear-gradient(90deg,var(--blue),var(--cyan)); border-radius:3px; }
+.pct { font-family:var(--font-mono); font-size:0.75rem; color:var(--text-dim); min-width:36px; }
+.no-data { text-align:center; padding:2rem !important; color:var(--text-dim); }
