@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "windows:serve": "node --max-old-space-size=8192 ./node_modules/@angular/cli/bin/ng serve",
     "test": "ng test",
     "deploy": "ng build --base-href '/vimalan-portfolio/' && npx angular-cli-ghpages --dir=dist/vimalan-portfolio/browser"
   },
