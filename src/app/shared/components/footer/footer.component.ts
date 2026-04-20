@@ -7,7 +7,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       <span class="mono">Built with Angular &amp; ❤ by Vimalan Senthilkumar · {{ year }}</span>
       <div class="footer-links">
         <a href="https://github.com/Vimalan1203" target="_blank"><mat-icon>code</mat-icon></a>
-        <a href="https://www.linkedin.com/in/vimalansenthilkumar-823139275" target="_blank"><mat-icon>link</mat-icon></a>
+        <a href="https://www.linkedin.com/in/vimalan-senthilkumar-823139275/" target="_blank"><mat-icon>link</mat-icon></a>
         <a href="mailto:vimalansenthilkumar@gmail.com"><mat-icon>mail</mat-icon></a>
       </div>
     </footer>`,
