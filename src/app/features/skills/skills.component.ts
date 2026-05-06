@@ -17,7 +17,8 @@ export class SkillsComponent implements OnInit {
   constructor(private data: PortfolioDataService) {}
 
   ngOnInit() {
-    this.groupedSkills$ = this.data.getSkills().pipe(
+    this.data.getSkills().subscribe(); // fetch & populate BehaviorSubject
+    this.groupedSkills$ = this.data.skills$.pipe(
       map(skills => skills.reduce((acc, s) => {
         acc[s.category] = acc[s.category] || [];
         acc[s.category].push(s);

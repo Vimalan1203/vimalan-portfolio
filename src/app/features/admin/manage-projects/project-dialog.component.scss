@@ -1,4 +1,57 @@
-.dialog-form { display:flex; flex-direction:column; gap:0.25rem; padding-top:0.5rem; min-width:520px; }
-.full-width { width:100%; }
-.row-two { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-@media(max-width:600px) { .dialog-form { min-width:unset; } .row-two { grid-template-columns:1fr; } }
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.5rem;
+  min-width: 520px;
+}
+
+.full-width { width: 100%; }
+
+.row-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media(max-width: 600px) {
+  .dialog-form { min-width: unset; }
+  .row-two { grid-template-columns: 1fr; }
+}
+
+/* Input text */
+.dialog-form input,
+.dialog-form textarea {
+  color: rgba(0, 0, 0, 0.87) !important;
+  font-size: 0.95rem;
+}
+
+/* Placeholder text */
+.dialog-form input::placeholder,
+.dialog-form textarea::placeholder {
+  color: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Mat-select value text */
+.dialog-form .mat-mdc-select-value-text {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Labels */
+.dialog-form .mat-mdc-floating-label,
+.dialog-form .mdc-floating-label {
+  color: rgba(0, 0, 0, 0.7) !important;
+  font-weight: 500;
+}
+
+/* Cancel button */
+mat-dialog-actions button[mat-button] {
+  color: rgba(0, 0, 0, 0.75) !important;
+  font-weight: 500;
+}
+
+/* Save/Update button */
+mat-dialog-actions button[mat-raised-button] {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}

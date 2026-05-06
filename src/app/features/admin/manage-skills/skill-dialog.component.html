@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Edit' : 'Add' }} Skill</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" class="dialog-form">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Skill Name</mat-label>
+            <input matInput formControlName="name" />
+            <mat-error *ngIf="form.get('name')?.hasError('required')">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+                <mat-option *ngFor="let c of categories" [value]="c">{{ c }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Icon (emoji)</mat-label>
+            <input matInput formControlName="icon" placeholder="⚡" />
+        </mat-form-field>
+        <div class="slider-field">
+            <div class="slider-header">
+                <span class="slider-label">Proficiency</span>
+                <span class="slider-value-badge">{{ form.get('proficiency')?.value }}%</span>
+            </div>
+            <mat-slider min="10" max="100" step="5" class="full-slider">
+                <input matSliderThumb formControlName="proficiency" />
+            </mat-slider>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button class="btn btn-danger" mat-dialog-close>Cancel</button>
+    <button mat-button class="btn btn-primary" (click)="save()">
+        <mat-icon>save</mat-icon> {{ isEdit ? 'Update' : 'Add' }}
+    </button>
+</mat-dialog-actions>

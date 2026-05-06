@@ -13,5 +13,8 @@ import { Project } from '../../core/models/portfolio.models';
 export class ProjectsComponent implements OnInit {
   projects$!: Observable<Project[]>;
   constructor(private data: PortfolioDataService) {}
-  ngOnInit() { this.projects$ = this.data.getProjects(); }
+  ngOnInit() {
+    this.data.getProjects().subscribe(); // fetch & populate BehaviorSubject
+    this.projects$ = this.data.projects$;
+  }
 }

@@ -5,42 +5,8 @@ import { Skill } from '../../../core/models/portfolio.models';
 
 @Component({
   selector: 'app-skill-dialog',
-  template: `
-    <h2 mat-dialog-title>{{ isEdit ? 'Edit' : 'Add' }} Skill</h2>
-    <mat-dialog-content>
-      <form [formGroup]="form" class="dialog-form">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Skill Name</mat-label>
-          <input matInput formControlName="name"/>
-          <mat-error *ngIf="form.get('name')?.hasError('required')">Required</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Category</mat-label>
-          <mat-select formControlName="category">
-            <mat-option *ngFor="let c of categories" [value]="c">{{ c }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Icon (emoji)</mat-label>
-          <input matInput formControlName="icon" placeholder="⚡"/>
-        </mat-form-field>
-        <div class="slider-field">
-          <label class="slider-label">Proficiency: <strong>{{ form.get('proficiency')?.value }}%</strong></label>
-          <mat-slider min="10" max="100" step="5" class="full-slider">
-            <input matSliderThumb formControlName="proficiency"/>
-          </mat-slider>
-        </div>
-      </form>
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-raised-button color="primary" (click)="save()">
-        <mat-icon>save</mat-icon> {{ isEdit ? 'Update' : 'Add' }}
-      </button>
-    </mat-dialog-actions>`,
-  styles: [`.dialog-form{display:flex;flex-direction:column;gap:.5rem;padding-top:.5rem;min-width:400px}
-    .full-width{width:100%}.slider-label{font-size:.875rem;color:var(--text-dim);display:block;margin-bottom:.5rem}
-    .slider-field{padding:.5rem 0}.full-slider{width:100%}`],
+  templateUrl: './skill-dialog.component.html',
+  styleUrls: ['./skill-dialog.component.scss'],
   standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

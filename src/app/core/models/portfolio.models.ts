@@ -40,3 +40,25 @@ export interface AuthUser {
   username: string;
   token: string;
 }
+
+export interface Hero {
+  tag: string;
+  first_name: string;
+  last_name: string;
+  description: string;
+}
+ 
+export interface Role {
+  title: string;
+}
+ 
+export interface Stat {
+  num: string;
+  label: string;
+}
+ 
+export interface HomePageData {
+  hero: Hero;
+  roles: Role[];
+  stats: Stat[];
+}

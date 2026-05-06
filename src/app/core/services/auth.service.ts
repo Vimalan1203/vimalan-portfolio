@@ -1,39 +1,40 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 export interface AuthUser { username: string; token: string; }
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly TOKEN_KEY = 'vs_portfolio_token';
-  private readonly ADMIN_USER = 'vimalan';
-  private readonly ADMIN_PASS = 'Admin@2025';
+  private readonly apiUrl = environment.apiUrl;
 
   private currentUserSubject = new BehaviorSubject<AuthUser | null>(this.loadUser());
   currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   get isLoggedIn(): boolean { return !!this.currentUserSubject.value; }
   get currentUser(): AuthUser | null { return this.currentUserSubject.value; }
 
   login(username: string, password: string): Observable<AuthUser> {
-    if (username === this.ADMIN_USER && password === this.ADMIN_PASS) {
-      const user: AuthUser = {
-        username,
-        token: btoa(`${username}:${Date.now()}:vs_portfolio_secret`)
-      };
-      return of(user).pipe(
-        delay(800),
-        tap(u => { localStorage.setItem(this.TOKEN_KEY, JSON.stringify(u)); this.currentUserSubject.next(u); })
-      );
-    }
-    return throwError(() => new Error('Invalid credentials'));
+    return this.http.post<AuthUser>(`${this.apiUrl}/auth/login`, { username, password }).pipe(
+      tap(user => {
+        localStorage.setItem(this.TOKEN_KEY, JSON.stringify(user));
+        this.currentUserSubject.next(user);
+      }),
+      catchError(err => {
+        const message = err.error?.detail || 'Invalid credentials';
+        return throwError(() => new Error(message));
+      })
+    );
   }
 
   logout(): void {
+    this.http.post(`${this.apiUrl}/auth/logout`, {}).subscribe();
     localStorage.removeItem(this.TOKEN_KEY);
     this.currentUserSubject.next(null);
     this.router.navigate(['/']);

@@ -15,11 +15,14 @@
       <a mat-raised-button color="primary" routerLink="/projects">View Projects</a>
       <a mat-stroked-button routerLink="/contact" class="btn-outline-custom">Get in Touch</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat" *ngFor="let s of stats">
-        <div class="stat-num">{{ s.num }}</div>
-        <div class="stat-label">{{ s.label }}</div>
+    <ng-container *ngIf="homeData$ | async as data">
+      <div class="hero-stats">
+        <div class="stat" *ngFor="let s of data.stats">
+          <div class="stat-num">{{ s.num }}</div>
+          <div class="stat-label">{{ s.label }}</div>
+        </div>
       </div>
-    </div>
+    </ng-container>
+    
   </div>
 </section>

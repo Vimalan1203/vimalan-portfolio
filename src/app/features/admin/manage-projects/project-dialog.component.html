@@ -53,8 +53,8 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" (click)="save()">
+  <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+  <button class="btn btn-primary" mat-button (click)="save()">
     <mat-icon>save</mat-icon> {{ isEdit ? 'Update' : 'Add' }} Project
   </button>
 </mat-dialog-actions>
