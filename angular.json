@@ -54,7 +54,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "src/styles.scss"],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss"
+            ],
             "optimization": {
               "scripts": true,
               "styles": {
@@ -101,12 +104,12 @@
           "defaultConfiguration": "development"
         },
         "deploy": {
-  "builder": "angular-cli-ghpages:deploy",
-  "options": {
-    "baseHref": "/vimalan-portfolio/",
-    "dir": "dist/vimalan-portfolio/browser"
-  }
-}
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/vimalan-portfolio/",
+            "dir": "dist/vimalan-portfolio/browser"
+          }
+        }
       }
     }
   }
