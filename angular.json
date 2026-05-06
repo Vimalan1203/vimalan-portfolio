@@ -101,8 +101,12 @@
           "defaultConfiguration": "development"
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
-        }
+  "builder": "angular-cli-ghpages:deploy",
+  "options": {
+    "baseHref": "/vimalan-portfolio/",
+    "dir": "dist/vimalan-portfolio/browser"
+  }
+}
       }
     }
   }
