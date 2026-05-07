@@ -1,27 +1,53 @@
 <div class="login-wrapper">
-  <mat-card class="login-card">
-    <div class="login-icon"><mat-icon>lock</mat-icon></div>
-    <h2>Admin Login</h2>
-    <p class="hint">Default: vimalan / Admin&#64;2025</p>
+  <div class="bg-grid"></div>
+  <div class="accent-blob"></div>
 
-    <mat-error *ngIf="error" class="error-msg">{{ error }}</mat-error>
+  <mat-card class="login-card">
+    <div class="login-icon">
+      <mat-icon>lock</mat-icon>
+    </div>
+
+    <h2>Admin Login</h2>
+    <p class="subtitle">Secure access to the control panel</p>
+
+    <!-- <div class="hint-pill">
+      <mat-icon class="hint-icon">info</mat-icon>
+      Default: vimalan / Admin&#64;2025
+    </div> -->
+
+    <div class="error-bar" *ngIf="error">
+      <mat-icon>error_outline</mat-icon>
+      <span>{{ error }}</span>
+    </div>
 
     <form [formGroup]="form" (ngSubmit)="login()">
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="username"/>
-        <mat-icon matSuffix>person</mat-icon>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'"/>
-        <button mat-icon-button matSuffix type="button" (click)="hidePassword=!hidePassword">
-          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-        </button>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" class="login-btn" [disabled]="loading">
-        <mat-spinner *ngIf="loading" diameter="20" class="inline-spinner"></mat-spinner>
-        {{ loading ? 'Logging in...' : 'Login' }}
+      <div class="field-group">
+        <label class="field-label" for="username">Username</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput id="username" formControlName="username" placeholder="Enter username" autocomplete="username" />
+          <mat-icon matPrefix class="prefix-icon">person_outline</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="password">Password</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput id="password" formControlName="password"
+                 [type]="hidePassword ? 'password' : 'text'"
+                 placeholder="Enter password" autocomplete="current-password" />
+          <mat-icon matPrefix class="prefix-icon">key</mat-icon>
+          <button mat-icon-button matSuffix type="button"
+                  (click)="hidePassword = !hidePassword"
+                  [attr.aria-label]="hidePassword ? 'Show password' : 'Hide password'">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button type="submit" class="login-btn" [disabled]="loading">
+        <mat-spinner *ngIf="loading" diameter="18" class="inline-spinner"></mat-spinner>
+        <mat-icon *ngIf="!loading">login</mat-icon>
+        <span>{{ loading ? 'Logging in…' : 'Login' }}</span>
       </button>
     </form>
   </mat-card>
